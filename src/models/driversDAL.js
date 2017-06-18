@@ -6,7 +6,7 @@ var config = require('../config/config');
 var queries = require('./queries');
 var driversFormmater = require('../utils/driversFormatter');
 
-var connectionString = process.env.DATABASE_URL || config.postgreSQL.DATABASE_URL||config.postgreSQL.HEROKU_URI;
+var connectionString = process.env.DATABASE_URL || config.postgreSQL.HEROKU_URI;
 var postgreClient = pg(connectionString);
 
 var driversDAL = (function () {
