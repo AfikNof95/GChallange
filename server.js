@@ -4,8 +4,8 @@
 
 
 var express = require('express');
-var config = require('./config/config');
-var router = require('./routes/gettRouter');
+var config = require('./src/config/config');
+var router = require('./src/routes/gettRouter');
 var bodyParser = require('body-parser');
 
 

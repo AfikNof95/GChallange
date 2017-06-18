@@ -4,7 +4,7 @@
 var pg = require('pg-promise')();
 var config = require('../config/config');
 var queries = require('./queries');
-var driversFormmater = require('../utils/driversFormatter');
+var driversFormmater = require('./driversFormatter');
 
 var connectionString = process.env.DATABASE_URL || config.postgreSQL.DATABASE_URL;
 var postgreClient = pg(connectionString);

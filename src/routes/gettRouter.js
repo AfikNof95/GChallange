@@ -2,7 +2,7 @@
  * Created by Afik on 18/06/2017.
  */
 var express = require('express');
-var DriversDAL = require('../models/driversDAL');
+var DriversDAL = require('./driversDAL');
 var router = express.Router();
 
 router.get('/driver/:id', function (req, res, next) {
