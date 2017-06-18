@@ -4,7 +4,7 @@
 var express = require('express');
 var DriversDAL = require('../models/driversDAL');
 var router = express.Router();
-var fs = require('fs');
+var jsonReader = require('../utils/jsonReader');
 
 
 router.get('/driver/:id', function (req, res, next) {
@@ -18,7 +18,7 @@ router.get('/driver/:id', function (req, res, next) {
 router.post('/import', function (req, res, next) {
 
     // var drivers = require('../../Gett.json');
-    readJson().then(function (data) {
+    jsonReader().then(function (data) {
         DriversDAL.insertDrivers(data).then(function () {
             res.send({status: 200, message: 'Import ended successfully!'});
         })
@@ -29,28 +29,6 @@ router.post('/import', function (req, res, next) {
 
 
 });
-
-
-function readJson() {
-    return new Promise(function (resolve, reject) {
-        var index = 0;
-        var jsonData = '';
-        var data = fs.createReadStream('Gett.json', 'utf8');
-        data.on('data', function (data) {
-            console.log(++index, data);
-            jsonData += data;
-        });
-        data.on('error', function (err) {
-            console.log(err);
-            reject(err);
-        });
-        data.on('end', function () {
-            console.log(JSON.parse(jsonData));
-            resolve(JSON.parse(jsonData));
-        });
-    });
-
-}
 
 
 module.exports = router;
