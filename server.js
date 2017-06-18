@@ -7,11 +7,12 @@ var express = require('express');
 var config = require('./src/config/config');
 var router = require('./src/routes/gettRouter');
 var bodyParser = require('body-parser');
-
+var cors = require('cors');
 
 var app = express();
 var port = process.env.PORT || config.server.port;
 
+app.use(cors());
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 app.use('/api', router);
