@@ -1,5 +1,4 @@
-{
-  "drivers": [
+[
     {
       "id": 3,
       "name": "Johnny B. Goode",
@@ -41,4 +40,3 @@
       "license_number": "46-251-01"
     }
   ]
-}

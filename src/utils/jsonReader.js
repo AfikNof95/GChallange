@@ -3,21 +3,18 @@
  */
 var fs = require('fs');
 
-module.exports = function () {
+module.exports = function (file) {
     return new Promise(function (resolve, reject) {
-        var index = 0;
+        var filePath = file || 'Gett.json';
         var jsonData = '';
-        var data = fs.createReadStream('Gett.json', 'utf8');
+        var data = fs.createReadStream(filePath, 'utf8');
         data.on('data', function (data) {
-            console.log(++index, data);
             jsonData += data;
         });
         data.on('error', function (err) {
-            console.log(err);
             reject(err);
         });
         data.on('end', function () {
-            console.log(JSON.parse(jsonData));
             resolve(JSON.parse(jsonData));
         });
     });

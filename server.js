@@ -8,7 +8,7 @@ var config = require('./src/config/config');
 var router = require('./src/routes/gettRouter');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var fs = require('fs');
+
 
 
 
