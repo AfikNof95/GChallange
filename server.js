@@ -14,12 +14,6 @@ var app = express();
 var port = process.env.PORT || config.server.port;
 
 
-app.get('/', function (res, req) { //senity check
-    res.send('Welcome to my Gett Challange');
-});
-
-
-
 app.use(cors());
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
