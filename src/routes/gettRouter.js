@@ -7,9 +7,10 @@ var router = express.Router();
 var jsonReader = require('../utils/jsonReader');
 var formidable = require('formidable');
 
+
 router.get('/driver/:id', function (req, res, next) {
     DriversDAL.getDriverById(req.params.id).then(function (response) {
-        res.send(response);
+        res.json(response);
     }).catch(function (error) {
         res.send(error);
     });
@@ -22,7 +23,7 @@ router.post('/import', function (req, res, next) { //imports file from form-data
         if (files.file) {
             jsonReader(files.file.path).then(function (data) {
                 DriversDAL.insertDrivers(data).then(function () {
-                    res.send({status: 200, message: 'Import ended successfully!'});
+                    res.json({status: 200, message: 'Import ended successfully!'});
                 })
                     .catch(function (error) {
                         res.send(error);
