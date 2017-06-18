@@ -4,7 +4,7 @@
 var pg = require('pg-promise')();
 var config = require('../config/config');
 var queries = require('./queries');
-var driversFormmater = require('./driversFormatter');
+var driversFormmater = require('../utils/driversFormatter');
 
 var connectionString = process.env.DATABASE_URL || config.postgreSQL.HEROKU_URI;
 var postgreClient = pg(connectionString);
