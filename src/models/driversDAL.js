@@ -6,7 +6,7 @@ var config = require('../config/config');
 var queries = require('./queries');
 var driversFormmater = require('../utils/driversFormatter');
 
-var connectionString = process.env.DATABASE_URL || config.postgreSQL.HEROKU_URI;
+var connectionString = process.env.DATABASE_URL || config.postgreSQL.DATABASE_URL||config.postgreSQL.HEROKU_URI;
 var postgreClient = pg(connectionString);
 
 var driversDAL = (function () {
@@ -20,8 +20,6 @@ var driversDAL = (function () {
     function insertDrivers(data) {
         var sql = queries.IMPORT_DRIVERS;
         var sqlValues = driversFormmater(data);
-        console.log(sqlValues.join(','));
-        console.log(sql.replace('$Values', sqlValues.join(',')));
         return postgreClient.none(sql.replace('$Values', sqlValues.join(',')))
     }
 
