@@ -5,10 +5,10 @@ function formatJson(data) {
     var sqlValues = [];
     data.forEach(function (driver) {
         var singleDriverData = Object.keys(driver).map(function (key) {
-            return "'" + driver[key] + "'";
+            return "'"+driver[key]+"'";
         }).join(',');
-
-        sqlValues.push('(' + singleDriverData + ')');
+        singleDriverData="("+singleDriverData+")";
+        sqlValues.push(singleDriverData);
     });
     return sqlValues;
 }

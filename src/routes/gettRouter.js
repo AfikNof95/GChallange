@@ -33,18 +33,22 @@ router.post('/import/local', function (req, res, next) { //imports local json fi
 router.post('/import', function (req, res, next) { //imports file from form-data, if undefined imports the default local json Gett.json
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
-        jsonReader(files.file.path).then(function (data) {
-            DriversDAL.insertDrivers(data).then(function () {
-                res.send({status: 200, message: 'Import ended successfully!'});
-            })
-                .catch(function (error) {
-                    res.send(error);
-                });
-        }).catch(function (error) {
-            res.send(error);
-        });
-
-
+        if (files.file) {
+            jsonReader(files.file.path).then(function (data) {
+                DriversDAL.insertDrivers(data).then(function () {
+                    res.send({status: 200, message: 'Import ended successfully!'});
+                })
+                    .catch(function (error) {
+                        res.send(error);
+                    });
+            }).catch(function (error) {
+                res.send(error);
+            });
+        }
+        else {
+            res.status(500);
+            res.send('Please send a file with key file');
+        }
     })
 });
 

@@ -3,8 +3,8 @@
  */
 var queries = module.exports = {
 
-    'SELECT_DRIVER_BY_ID': 'SELECT * FROM drivers WHERE id=$ID',
-    'IMPORT_DRIVERS':'INSERT INTO drivers(id,name,license_number) VALUES$Values'
+    'SELECT_DRIVER_BY_ID': 'SELECT * FROM drivers WHERE id=$1',
+    'IMPORT_DRIVERS':'INSERT INTO drivers(id,name,license_number) VALUES$1'
 
 };
 

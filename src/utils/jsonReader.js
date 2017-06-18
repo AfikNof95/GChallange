@@ -7,7 +7,7 @@ module.exports = function (file) {
     return new Promise(function (resolve, reject) {
         var filePath = file || 'Gett.json';
         var jsonData = '';
-        var data = fs.createReadStream(filePath, 'utf8');
+        var data = fs.createReadStream(filePath,'utf8');
         data.on('data', function (data) {
             jsonData += data;
         });
