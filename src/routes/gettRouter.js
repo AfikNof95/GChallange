@@ -14,7 +14,7 @@ router.get('/driver/:id', function (req, res, next) {
 });
 
 router.post('/import', function (req, res, next) {
-    var drivers = require('../Gett.json');
+    var drivers = require('../../Gett.json');
     DriversDAL.insertDrivers(drivers).then(function () {
         res.send({status: 200, message: 'Import ended successfully!'});
     })
